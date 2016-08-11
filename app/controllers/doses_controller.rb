@@ -5,25 +5,25 @@ class IngredientsController < ApplicationController
   end
 
   def index
-    @doses = dose.all
+    @doses = Dose.all(cocktail_id)
   end
 
 
   def show
   end
 
-  # def new
-  #   @dose = dose.new
-  # end
+  def new
+    @dose = dose.new
+  end
 
-  # def create
-  #   @dose = dose.new(dose_params)
-  #   if @dose.save
-  #     redirect_to dose_path(@dose)
-  #   else
-  #     render :new
-  #   end
-  # end
+  def create
+    @dose = dose.new(dose_params)
+    if @dose.save
+      redirect_to dose_path(@dose)
+    else
+      render :new
+    end
+  end
 
   # def edit
   #   @dose = dose.find(params[:id])
@@ -40,14 +40,43 @@ class IngredientsController < ApplicationController
   #   redirect_to doses_path
   # end
 
-#   private
+  private
 
-#   def set_dose
-#     @dose = dose.find(params[:id])
-#   end
+  def set_dose
+    @dose = dose.find(params[:id])
+  end
 
-#   def dose_params
-#     params.require(:dose).permit(:name, :address, :category, :phone_number)
-#   end
+  def dose_params
+    params.require(:dose).permit(:name, :address, :category, :phone_number)
+  end
 end
 
+
+class ReviewsController < ApplicationController
+  before_action :set_restaurant, only: [:new, :create]
+
+  def new
+    @review = Review.new
+  end
+
+  def create
+    @review = Review.new(review_params)
+    @review.restaurant = @restaurant
+    # @restaurant.reviews.build(review_params)
+    if @review.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:restaurant_id])
+  end
+
+  def review_params
+    params.require(:review).permit(:content)
+  end
+end

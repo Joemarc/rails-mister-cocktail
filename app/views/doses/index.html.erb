@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="text-center padded">
+    <h2>Voici les doses disponibles</h2>
+  </div>
+   <div class="row">
+    <% @doses.each do |dose| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://unsplash.it/200/300/?random');">
+          <div class="card-category"></div>
+          <div class="card-description"></div>
+        <%= link_to dose.name, dose_path(dose), class: "card-link" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+ </div>
