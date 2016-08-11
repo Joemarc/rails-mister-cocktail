@@ -1,5 +1,5 @@
-class IngredientsController < ApplicationController
-  before_action :set_dose, only: [ :show, :edit, :update, :destroy ]
+class DosesController < ApplicationController
+  before_action :set_dose, only: [ :show, :edit, :update, :destroy, :new, :create ]
 
   def home
   end
@@ -13,15 +13,16 @@ class IngredientsController < ApplicationController
   end
 
   def new
-    @dose = dose.new
+    @dose = Dose.new
   end
 
   def create
-    @dose = dose.new(dose_params)
+    @dose = Dose.new(dose_params)
+    @dose.cocktail = @cocktail
     if @dose.save
-      redirect_to dose_path(@dose)
+      redirect_to cocktail_path(@cocktail)
     else
-      render :new
+      render 'cocktails/show'
     end
   end
 
@@ -43,7 +44,7 @@ class IngredientsController < ApplicationController
   private
 
   def set_dose
-    @dose = dose.find(params[:id])
+    @cocktail = Cocktail.find(params[:cocktail_id])
   end
 
   def dose_params
@@ -52,31 +53,31 @@ class IngredientsController < ApplicationController
 end
 
 
-class ReviewsController < ApplicationController
-  before_action :set_restaurant, only: [:new, :create]
+# class ReviewsController < ApplicationController
+#   before_action :set_restaurant, only: [:new, :create]
 
-  def new
-    @review = Review.new
-  end
+#   def new
+#     @review = Review.new
+#   end
 
-  def create
-    @review = Review.new(review_params)
-    @review.restaurant = @restaurant
-    # @restaurant.reviews.build(review_params)
-    if @review.save
-      redirect_to restaurant_path(@restaurant)
-    else
-      render :new
-    end
-  end
+#   def create
+#     @review = Review.new(review_params)
+#     @review.restaurant = @restaurant
+#     # @restaurant.reviews.build(review_params)
+#     if @review.save
+#       redirect_to restaurant_path(@restaurant)
+#     else
+#       render :new
+#     end
+#   end
 
-  private
+#   private
 
-  def set_restaurant
-    @restaurant = Restaurant.find(params[:restaurant_id])
-  end
+#   def set_restaurant
+#     @restaurant = Restaurant.find(params[:restaurant_id])
+#   end
 
-  def review_params
-    params.require(:review).permit(:content)
-  end
-end
+#   def review_params
+#     params.require(:review).permit(:content)
+#   end
+# end

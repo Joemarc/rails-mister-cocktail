@@ -1,14 +1,25 @@
 <div class= "text-center padded">
   <h1><%= @cocktail.name %></h1>
+    <% @cocktail.doses.each do |dose| %>
+    <p><%= dose.description %> of <%= dose.ingredient.name %></p>
+  <% end %>
   <p class= "list-inline"><%= link_to "All cocktails", cocktails_path, class: 'btn btn-primary' %></p>
   <p class= "list-inline"><%= link_to "Create a new cocktail", new_cocktail_path, class: 'btn btn-primary' %></p>
 
-  <h1>doses</h1>
-  <p class= "list-inline"><%= link_to "Create a dose", new_cocktail_dose_path(@cocktail), class: 'btn btn-primary' %></p>
+  <h1>Doses</h1>
 
-  <% @cocktail.doses.each do |dose| %>
-    <p><%= dose.description %></p>
-  <% end %>
+  <div class ="container text-center">
+    <div class ="row">
+      <div class ="col-md-6 col-md-offset-3">
+        <%= simple_form_for([@cocktail, @dose]) do |f| %>
+          <%= f.input :description, placeholder: "5cl" %>
+          <%= f.association :ingredient %>
+          <div class="actions">
+            <%= f.button :submit, class: 'btn btn-primary'%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
-</div>
