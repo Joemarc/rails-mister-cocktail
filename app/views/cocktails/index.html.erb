@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="text-center padded">
+    <h2>Voici les restaurants disponibles</h2>
+  </div>
+   <div class="row">
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://unsplash.it/200/300/?random');">
+          <div class="card-category"><%= restaurant.name %></div>
+          <div class="card-description">
+          <h2><%= restaurant.address %></h2>
+          <p><%= restaurant.phone_number %></p>
+        </div>
+        <%= link_to restaurant.name, restaurant_path(restaurant), class: "card-link" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+ </div>
