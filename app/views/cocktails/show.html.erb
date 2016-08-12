@@ -1,8 +1,9 @@
 <div class="media">
   <div class="media-body">
     <div class="media-section">
+    <div class="section-heading"> <%= @cocktail.name  %></div>
      <% if @cocktail.photos.first %>
-       <%= cl_image_tag @cocktail.photos.first.path, height: 250, width: 300, crop: :scale %>
+       <%= cl_image_tag @cocktail.photos.first.path, height: 600, width: 400, crop: :scale %>
       <% else %>
         <img src="#" alt="">
       <% end %>
@@ -12,12 +13,13 @@
     </div>
   </div>
   <div class="media-aside">
+    <div class="section-heading"> Recipe :</div>
     <div class="media-section">
       <div class="share-links">
-      <a class="share-link bg-facebook text-center" href=""></a>
-      <a class="share-link bg-twitter  text-center" href=""></a>
-      <a class="share-link bg-linkedin text-center" href=""></a>
-      <a class="share-link bg-mail     text-center" href=""></a>
+        <a class="share-link bg-facebook text-center" href=""></a>
+        <a class="share-link bg-twitter  text-center" href=""></a>
+        <a class="share-link bg-linkedin text-center" href=""></a>
+        <a class="share-link bg-mail     text-center" href=""></a>
       </div>
     </div>
     <div class="media-section">

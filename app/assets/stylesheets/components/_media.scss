@@ -6,7 +6,7 @@
   padding: 20px;
 }
 .media-body img {
-  width: 80%;
+  width: 100%;
 }
 
 .media-aside {
@@ -24,4 +24,23 @@
 }
 .media-section:last-child {
   margin-bottom: 0;
+}
+
+.share-link {
+    flex: 0 0 24%;
+    color: white;
+    font-size: 18px;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.section-heading {
+    color: #bbb;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 22px;
+    margin: 0 0 16px;
+    text-transform: uppercase;
 }
