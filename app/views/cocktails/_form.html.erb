@@ -11,6 +11,11 @@
           </div>
         <% end %>
         <%= f.input :name %>
+        <%= f.input :photos, as: :attachinary %>
+        <% @cocktail.photos.each do |photo| %>
+          <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+        <% end %>
+
         <div class="actions">
           <%= f.button :submit, class: 'btn btn-primary'%>
         </div>

@@ -12,7 +12,6 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -40,6 +39,19 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 ruby '2.3.1'
+
+gem 'rails-controller-testing'
+
+gem 'figaro'
+
+gem 'cloudinary', '1.1.0'
+
+gem 'coffee-rails'
+
+gem 'attachinary', '1.3.1'
+
+gem 'jquery-fileupload-rails'
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

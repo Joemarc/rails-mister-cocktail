@@ -1,7 +1,9 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to cocktails_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "lafourchette.png" %>
+    <i class="fa fa-glass" aria-hidden= "true"></i>
+    <span>Mister</span>
+    <span>Cocktail</span>
   <% end %>
 
   <!-- Right Navigation -->
@@ -15,13 +17,6 @@
       </button>
     </form>
 
-    <!-- Notification -->
-    <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-      <div class="badge-container">
-        <i class="fa fa-envelope-o"></i>
-        <div class="badge badge-blue">3</div>
-      </div>
-    <% end %>
 
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
@@ -43,7 +38,7 @@
     </div>
 
     <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <%= link_to "Create a new Cocktail", new_cocktail_path, class: "btn btn-primary" %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->

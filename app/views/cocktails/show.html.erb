@@ -1,25 +1,37 @@
-<div class= "text-center padded">
-  <h1><%= @cocktail.name %></h1>
-    <% @cocktail.doses.each do |dose| %>
-    <p><%= dose.description %> of <%= dose.ingredient.name %></p>
-  <% end %>
-  <p class= "list-inline"><%= link_to "All cocktails", cocktails_path, class: 'btn btn-primary' %></p>
-  <p class= "list-inline"><%= link_to "Create a new cocktail", new_cocktail_path, class: 'btn btn-primary' %></p>
-
-  <h1>Doses</h1>
-
-  <div class ="container text-center">
-    <div class ="row">
-      <div class ="col-md-6 col-md-offset-3">
-        <%= simple_form_for([@cocktail, @dose]) do |f| %>
-          <%= f.input :description, placeholder: "5cl" %>
-          <%= f.association :ingredient %>
-          <div class="actions">
-            <%= f.button :submit, class: 'btn btn-primary'%>
-          </div>
-        <% end %>
+<div class="media">
+  <div class="media-body">
+    <div class="media-section">
+     <% if @cocktail.photos.first %>
+       <img src="<%= cl_image_path @cocktail.photos.first.path%>;" alt="Cocktail">
+      <% else %>
+        <img src="#" alt="">
+      <% end %>
+    <div class="media-section">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure cumque, ipsa consequatur quia explicabo, deserunt quibusdam eveniet, quo laudantium ipsam odio sapiente excepturi voluptas, enim doloremque officia? Iusto, fugit assumenda! </p>
+    </div>
+  </div>
+  <div class="media-aside">
+    <div class="media-section">
+      <div class="share-links">
+      <a class="share-link bg-facebook text-center" href=""></a>
+      <a class="share-link bg-twitter  text-center" href=""></a>
+      <a class="share-link bg-linkedin text-center" href=""></a>
+      <a class="share-link bg-mail     text-center" href=""></a>
       </div>
+    </div>
+    <div class="media-section">
+      <ul class="list-unstyled">
+        <% @cocktail.doses.each do |dose| %>
+          <li><%= dose.description %> of <%= link_to dose.ingredient.name, ingredient_path(dose.ingredient) %> <%= link_to "Delete", dose_path(dose), class: "delete", method: :delete, data: { confirm: "Are you sure?" } %></li>
+        <% end %>
+      </ul>
+      <h2>Add a dose</h2>
+      <%= simple_form_for([@cocktail, @dose]) do |f| %>
+        <%= f.input :description, placeholder: "5cl" %>
+        <%= f.association :ingredient %>
+        <%= f.button :submit, class: "btn btn-primary"  %>
+      <% end %>
+      <%= link_to 'Back', cocktails_path %>
     </div>
   </div>
 </div>
-

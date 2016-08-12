@@ -14,6 +14,11 @@ Ingredient.destroy_all
 coca = Ingredient.create(name: "Coca")
 whisky = Ingredient.create(name: "Whisky")
 vodka = Ingredient.create(name: "Vodka")
+menthe = Ingredient.create(name: "Menthe")
+basilic = Ingredient.create(name: "Basilic")
+glace = Ingredient.create(name: "Glace pillée")
+citron_vert = Ingredient.create(name: "Citron_vert")
+rhum = Ingredient.create(name: "Rhum")
 
 whisky_sour = Cocktail.create(name: "Whisky Sour")
 cuba_libre = Cocktail.create(name: "Cuba Libre")
