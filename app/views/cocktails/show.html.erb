@@ -2,10 +2,11 @@
   <div class="media-body">
     <div class="media-section">
      <% if @cocktail.photos.first %>
-       <img src="<%= cl_image_path @cocktail.photos.first.path%>;" alt="Cocktail">
+       <%= cl_image_tag @cocktail.photos.first.path, height: 250, width: 300, crop: :scale %>
       <% else %>
         <img src="#" alt="">
       <% end %>
+    </div>
     <div class="media-section">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure cumque, ipsa consequatur quia explicabo, deserunt quibusdam eveniet, quo laudantium ipsam odio sapiente excepturi voluptas, enim doloremque officia? Iusto, fugit assumenda! </p>
     </div>
